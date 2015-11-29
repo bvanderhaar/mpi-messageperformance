@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
       clock_t message_received = clock();
       double elapsed =
           double(message_received - message_sent) / (CLOCKS_PER_SEC / 1000);
-      printf("Elapsed time: %f\n", elapsed);
+      printf("Message Ticks: %f Now: %f Elapsed time: %f\n", message_sent, message_sent, elapsed);
     }
   }
 
