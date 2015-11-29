@@ -26,4 +26,4 @@
 *.exe
 *.out
 *.app
-mpicomperf
+mpi-comperf
