@@ -19,9 +19,9 @@ int main(int argc, char *argv[]) {
   double program_start = MPI_Wtime();
   if (my_rank != MASTER) {
     double message_sent = MPI_Wtime();
-    /*for (long long i = 0; i < MSGSIZE; i++) {
-      message[i] = 'a' + std::rand() % 26;
-    }*/
+    for (long long i = 0; i < MSGSIZE; i++) {
+      message[i] = 'a' + (std::rand() % 26);
+    }
     MPI_Send(&message, strlen(message) + 1, MPI_CHAR, MASTER, TAG,
              MPI_COMM_WORLD);
 
