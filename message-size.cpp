@@ -5,7 +5,7 @@
 
 #define MASTER 0
 #define TAG 0
-#define MSGSIZE 99999
+#define MSGSIZE 9999999
 #define MAX 25
 
 int main(int argc, char *argv[]) {
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 
     double program_end = MPI_Wtime();
     double program_elapsed = program_end - program_start;
-    printf("Program Execution Time: %f\n", program_elapsed);
+    printf("Nodes, Message Size, Program Execution Time, %f,%f,%f\n", num_nodes, MSGSIZE, program_elapsed);
   }
 
   MPI_Finalize();
