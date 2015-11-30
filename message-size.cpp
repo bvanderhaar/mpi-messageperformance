@@ -6,7 +6,7 @@
 #define MASTER 0
 #define TAG 0
 #define MAX 25
-const long long MSGSIZE = 999999;
+const long long MSGSIZE = 999999999;
 
 int main(int argc, char *argv[]) {
   int my_rank, source, num_nodes;
