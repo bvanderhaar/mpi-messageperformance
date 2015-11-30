@@ -29,13 +29,14 @@ int main(int argc, char *argv[]) {
     printf("Num_nodes: %d\n", num_nodes);
     printf("Hello from Master (process %d)!\n", my_rank);
     double message_sent = 0;
+    MPI_Status status;
     for (source = 1; source < num_nodes; source++) {
       MPI_Recv(&message_sent, MSGSIZE, MPI_LONG_INT, source, TAG,
-               MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+               MPI_COMM_WORLD, &status);
       double message_received = MPI_Wtime();
       double elapsed = message_received - message_sent;
-      printf("Message Ticks: %f Now: %f Elapsed time: %f\n", message_sent,
-             message_received, elapsed);
+      printf("Host: %d Message Ticks: %f Now: %f Elapsed time: %f\n",
+             status.MPI_SOURCE, message_sent, message_received, elapsed);
     }
   }
 
