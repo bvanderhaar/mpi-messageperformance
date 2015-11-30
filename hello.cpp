@@ -42,8 +42,8 @@ int main(int argc, char *argv[]) {
   }
 
   MPI_Finalize();
-  double program_end = MPI_Wtime();
+  /*double program_end = MPI_Wtime();
   double program_elapsed = program_end - program_start;
-  printf("Program Execution Time: %f", program_elapsed);
+  printf("Program Execution Time: %f", program_elapsed);*/
   return 0;
 }
