@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
   MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
   MPI_Comm_size(MPI_COMM_WORLD, &num_nodes);
 
-  double program_start = MPI_Wtime();
+
   if (my_rank != MASTER) {
     gethostname(my_host, MAX);
     ////sprintf(message, "Hello from process %d on host %s!", my_rank, my_host);
@@ -27,6 +27,7 @@ int main(int argc, char *argv[]) {
     MPI_Send(&message_sent, MSGSIZE, MPI_DOUBLE, MASTER, TAG, MPI_COMM_WORLD);
 
   } else {
+    double program_start = MPI_Wtime();
     printf("Num_nodes: %d\n", num_nodes);
     printf("Hello from Master (process %d)!\n", my_rank);
     double message_sent = 0;
@@ -39,11 +40,13 @@ int main(int argc, char *argv[]) {
       printf("Host: %d Message Ticks: %f Now: %f Elapsed time: %f\n",
              status.MPI_SOURCE, message_sent, message_received, elapsed);
     }
+
+    double program_end = MPI_Wtime();
+    double program_elapsed = program_end - program_start;
+    printf("Program Execution Time: %f", program_elapsed);
   }
 
   MPI_Finalize();
-  /*double program_end = MPI_Wtime();
-  double program_elapsed = program_end - program_start;
-  printf("Program Execution Time: %f", program_elapsed);*/
+
   return 0;
 }
