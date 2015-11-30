@@ -26,4 +26,5 @@
 *.exe
 *.out
 *.app
-mpi-comperf
+mpi-size
+mpi-time
