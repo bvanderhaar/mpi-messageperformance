@@ -2,6 +2,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <mpi.h>
+#include <cstdlib>
 
 #define MASTER 0
 #define TAG 0
