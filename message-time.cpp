@@ -34,10 +34,11 @@ int main(int argc, char *argv[]) {
       printf("Host: %d Message Ticks: %f Now: %f Elapsed time: %f\n",
              status.MPI_SOURCE, message_sent, message_received, elapsed);
     }
+    double program_end = MPI_Wtime();
+    double program_elapsed = program_end - program_start;
+    printf("Program elapsed: %f\n", program_elapsed);
   }
-  double program_end = MPI_Wtime();
-  double program_elapsed = program_end - program_start;
-  printf("Program elapsed: %f", program_elapsed);
+
   MPI_Finalize();
 
   return 0;
