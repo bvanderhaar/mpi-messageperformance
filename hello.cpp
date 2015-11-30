@@ -5,7 +5,7 @@
 
 #define MASTER 0
 #define TAG 0
-#define MSGSIZE 10
+#define MSGSIZE 1
 #define MAX 25
 
 int main(int argc, char *argv[]) {
