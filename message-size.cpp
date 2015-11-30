@@ -22,7 +22,8 @@ int main(int argc, char *argv[]) {
     for (long long i = 0; i < MSGSIZE; i++) {
       message[i] = 'a' + std::rand() % 26;
     }
-    MPI_Send(&message, MSGSIZE, MPI_CHAR, MASTER, TAG, MPI_COMM_WORLD);
+    MPI_Send(&message, strlen(message) + 1, MPI_CHAR, MASTER, TAG,
+             MPI_COMM_WORLD);
 
   } else {
     printf("Num_nodes: %d\n", num_nodes);
