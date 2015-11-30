@@ -5,7 +5,7 @@
 
 #define MASTER 0
 #define TAG 0
-#define MSGSIZE 1
+#define MSGSIZE 10
 #define MAX 25
 
 int main(int argc, char *argv[]) {
@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
   MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
   MPI_Comm_size(MPI_COMM_WORLD, &num_nodes);
 
+  double program_start = MPI_Wtime();
   if (my_rank != MASTER) {
     gethostname(my_host, MAX);
     ////sprintf(message, "Hello from process %d on host %s!", my_rank, my_host);
@@ -41,6 +42,8 @@ int main(int argc, char *argv[]) {
   }
 
   MPI_Finalize();
-
+  double program_end = MPI_Wtime();
+  double program_elapsed = program_end - program_start;
+  printf("Program Execution Time: %f", program_elapsed);
   return 0;
 }
