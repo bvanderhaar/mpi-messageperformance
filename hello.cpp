@@ -5,7 +5,7 @@
 
 #define MASTER 0
 #define TAG 0
-#define MSGSIZE 100
+#define MSGSIZE 100000
 #define MAX 25
 
 int main(int argc, char *argv[]) {
@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
     ////MPI_Send(message, strlen(message) + 1, MPI_CHAR, MASTER, TAG,
     ////         MPI_COMM_WORLD);
     double message_sent = MPI_Wtime();
-    MPI_Send(&message_sent, 1, MPI_DOUBLE, MASTER, TAG, MPI_COMM_WORLD);
+    MPI_Send(&message_sent, MSGSIZE, MPI_DOUBLE, MASTER, TAG, MPI_COMM_WORLD);
 
   } else {
     printf("Num_nodes: %d\n", num_nodes);
