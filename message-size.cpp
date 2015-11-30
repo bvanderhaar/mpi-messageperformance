@@ -5,12 +5,11 @@
 
 #define MASTER 0
 #define TAG 0
-#define MSGSIZE 1000
+#define MSGSIZE 99999
 #define MAX 25
 
 int main(int argc, char *argv[]) {
   int my_rank, source, num_nodes;
-  char my_host[MAX];
   char message[MSGSIZE];
 
   MPI_Init(&argc, &argv);
@@ -18,13 +17,9 @@ int main(int argc, char *argv[]) {
   MPI_Comm_size(MPI_COMM_WORLD, &num_nodes);
 
   if (my_rank != MASTER) {
-    gethostname(my_host, MAX);
-    ////sprintf(message, "Hello from process %d on host %s!", my_rank, my_host);
-    ////MPI_Send(message, strlen(message) + 1, MPI_CHAR, MASTER, TAG,
-    ////         MPI_COMM_WORLD);
     double message_sent = MPI_Wtime();
     for (long long i = 0; i < MSGSIZE; i++) {
-      message[i] = (rand() % 26) + 65;
+      message[i] = 'a' + rand()%26;
     }
     MPI_Send(&message, MSGSIZE, MPI_CHAR, MASTER, TAG, MPI_COMM_WORLD);
 
