@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     MPI_Status status;
     for (source = 1; source < num_nodes; source++) {
       MPI_Recv(&message, MSGSIZE, MPI_CHAR, source, TAG, MPI_COMM_WORLD,
-               &status);
+               MPI_STATUS_IGNORE);
     }
 
     double program_end = MPI_Wtime();
